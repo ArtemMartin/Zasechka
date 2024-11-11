@@ -40,8 +40,13 @@ public class GenerateKML {
             return "min.png";
         }else if (harakterZeli.equals("РСЗО")){
             return "rszo.png";
-        }
-        
+        }else if (harakterZeli.equals("ат")){
+            return "авто пр2.png";
+        }else if (harakterZeli.equals("бт")){
+            return "бмп2.png";
+        }else if (harakterZeli.equals("Колонна")){
+            return "Колонна на восток.png";
+        }      
         return "arta.png";
     }
 
