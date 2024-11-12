@@ -101,15 +101,15 @@ public class Zasechka {
             while (matcher.find()) {
                 strChis = strChis + matcher.group();
             }
-            if (!strChis.equals("")) {
-                x = Double.parseDouble(strChis);             
+            if (!strChis.equals("") && strChis.length() >= 5) {
+                x = Double.parseDouble(strChis);
                 for (i++; i < strArr.length; i++) {
                     matcher = pattern.matcher(strArr[i]);//Создаем объект Matcher для работы со строкой
                     strChis = "";
                     while (matcher.find()) {
                         strChis = strChis + matcher.group();
                     }
-                    if (!strChis.equals("")) {
+                    if (!strChis.equals("") && strChis.length() >= 5) {
                         y = Double.parseDouble(strChis);
                         return new double[]{x, y};
                     }
@@ -120,7 +120,7 @@ public class Zasechka {
         return null;
     }
 
-  public static String getTime() {
+    public static String getTime() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         int hours = cal.get(Calendar.HOUR_OF_DAY); // Получение времени в 24-часовом формате
