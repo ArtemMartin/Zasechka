@@ -97,7 +97,7 @@ public class GenerateKML {
         if (y < 99999) {
             y += 7300000;
         }
-        x += -125.0;
+        x += -150;
         y += -117.0;
         int nZonu = (int) Math.round(y * Math.pow(10.0, -6.0));
         double b = x / 6367558.4968;
