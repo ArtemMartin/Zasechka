@@ -36,17 +36,17 @@ public class GenerateKML {
     public String getNamePng(String harakterZeli) {
         if (harakterZeli.equals("Арт орудие")) {
             return "arta.png";
-        }else if (harakterZeli.equals("миномет")){
+        } else if (harakterZeli.equals("миномет")) {
             return "min.png";
-        }else if (harakterZeli.equals("РСЗО")){
+        } else if (harakterZeli.equals("РСЗО")) {
             return "rszo.png";
-        }else if (harakterZeli.equals("ат")){
+        } else if (harakterZeli.equals("ат")) {
             return "авто пр2.png";
-        }else if (harakterZeli.equals("бт")){
+        } else if (harakterZeli.equals("бт")) {
             return "бмп2.png";
-        }else if (harakterZeli.equals("Колонна")){
+        } else if (harakterZeli.equals("Колонна")) {
             return "Колонна на восток.png";
-        }      
+        }
         return "arta.png";
     }
 
@@ -97,7 +97,7 @@ public class GenerateKML {
         if (y < 99999) {
             y += 7300000;
         }
-        x += -150;
+        x += getDX(y);
         y += -117.0;
         int nZonu = (int) Math.round(y * Math.pow(10.0, -6.0));
         double b = x / 6367558.4968;
@@ -111,4 +111,23 @@ public class GenerateKML {
         return new double[]{B, L};
     }
 
+    public double getDX(double y) {
+        double srY = 7387540.0;
+        double koef = 279.0 / 101588.0;
+        double dX = (y - srY) * koef + (-116.0);
+        return dX;
+    }
+
+    /*
+    KT1 5354786 7387428
+    KT2 5276790 7387653
+    KT3 5275689 7282892
+    KT4 5353000 7289014
+    
+    приращение между 1 и 2 КТ -116м
+    приращение между 3 и 4 КТ -395м
+    приращение между 12КТ и 34КТ -279м
+    Ср. дальность между рубежом 12 и 34 101588км
+    Коеф. приращ 279/101588 и добавить -116 для определения поправки
+     */
 }
