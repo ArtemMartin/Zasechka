@@ -48,7 +48,7 @@ public class Zasechka {
     public static String getNewName(String name) {
         boolean proverka = false;
         String nameNew;
-        File directory = new File("D:\\YO_NA\\Generate kml OZ");
+        File directory = new File("D:\\YO_NA\\Zasechki");
         File[] list = directory.listFiles();
 
         nameNew = name + getRandNumber();
