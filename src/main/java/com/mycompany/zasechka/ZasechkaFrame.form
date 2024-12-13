@@ -129,13 +129,14 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
+          <StringArray count="7">
             <StringItem index="0" value="&#x410;&#x440;&#x442; &#x43e;&#x440;&#x443;&#x434;&#x438;&#x435;"/>
             <StringItem index="1" value="&#x43c;&#x438;&#x43d;&#x43e;&#x43c;&#x435;&#x442;"/>
             <StringItem index="2" value="&#x420;&#x421;&#x417;&#x41e;"/>
             <StringItem index="3" value="&#x430;&#x442;"/>
             <StringItem index="4" value="&#x431;&#x442;"/>
             <StringItem index="5" value="&#x41a;&#x43e;&#x43b;&#x43e;&#x43d;&#x43d;&#x430;"/>
+            <StringItem index="6" value="&#x422;&#x417;&#x411;&#x41f;&#x41b;&#x410;"/>
           </StringArray>
         </Property>
       </Properties>

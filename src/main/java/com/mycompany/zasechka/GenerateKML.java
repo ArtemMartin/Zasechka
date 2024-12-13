@@ -46,6 +46,8 @@ public class GenerateKML {
             return "бмп2.png";
         } else if (harakterZeli.equals("Колонна")) {
             return "Колонна на восток.png";
+        }else if (harakterZeli.equals("ТЗБПЛА")) {
+            return "малый бла пр1.png";
         }
         return "arta.png";
     }
