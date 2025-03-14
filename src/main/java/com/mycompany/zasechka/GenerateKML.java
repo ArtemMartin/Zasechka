@@ -7,6 +7,7 @@ package com.mycompany.zasechka;
 import org.osgeo.proj4j.*;
 
 import static com.mycompany.zasechka.Zasechka.getTime;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author user
  */
 public class GenerateKML {
@@ -37,6 +37,42 @@ public class GenerateKML {
         namePng = getNamePng(harakterZeli);
     }
 
+    public static List<Double> refactorXYtoBL(double x, double y) {
+        List<Double> list = new ArrayList();
+        if (x < 99999) {
+            x += 5300000;
+        }
+
+        if (y < 99999) {
+            if (y > 50000)
+                y += 7300000;
+            else
+                y += 7400000;
+        }
+
+// Создаем исходную и целевую системы координат
+        CRSFactory factory = new CRSFactory();
+        CoordinateReferenceSystem srcCRS = factory.createFromName("EPSG:28407");
+        CoordinateReferenceSystem dstCRS = factory.createFromName("EPSG:4326");
+
+        // Создаем объект для преобразования координат
+        CoordinateTransformFactory ctFactory = new CoordinateTransformFactory();
+        CoordinateTransform transform = ctFactory.createTransform(srcCRS, dstCRS);
+
+        // Преобразуем координаты
+        //сначала вводим долготу потом широту
+        ProjCoordinate srcCoord = new ProjCoordinate(y, x);
+        ProjCoordinate dstCoord = new ProjCoordinate();
+        transform.transform(srcCoord, dstCoord);
+
+        // Выводим результат(наоборот x->y)
+        //System.out.println("Преобразованные координаты: " + dstCoord.x + ", " + dstCoord.y);
+        //возвращаем масив b, l
+        list.add(dstCoord.y);
+        list.add(dstCoord.x);
+        return list;
+    }
+
     public String getNamePng(String harakterZeli) {
         if (harakterZeli.equals("Арт орудие")) {
             return "arta.png";
@@ -50,7 +86,7 @@ public class GenerateKML {
             return "бмп2.png";
         } else if (harakterZeli.equals("Колонна")) {
             return "Колонна на восток.png";
-        }else if (harakterZeli.equals("ТЗБПЛА")) {
+        } else if (harakterZeli.equals("ТЗБПЛА")) {
             return "малый бла пр1.png";
         }
         return "arta.png";
@@ -94,36 +130,6 @@ public class GenerateKML {
             System.out.println("Шляпа: " + GenerateKML.class.getName() + e.getMessage());
         }
 
-    }
-    public static List<Double> refactorXYtoBL(double x, double y) {
-        List<Double> list = new ArrayList();
-        if (x < 99999) {
-            x += 5300000;
-        }
-        if (y < 99999) {
-            y += 7300000;
-        }
-// Создаем исходную и целевую системы координат
-        CRSFactory factory = new CRSFactory();
-        CoordinateReferenceSystem srcCRS = factory.createFromName("EPSG:28407");
-        CoordinateReferenceSystem dstCRS = factory.createFromName("EPSG:4326");
-
-        // Создаем объект для преобразования координат
-        CoordinateTransformFactory ctFactory = new CoordinateTransformFactory();
-        CoordinateTransform transform = ctFactory.createTransform(srcCRS, dstCRS);
-
-        // Преобразуем координаты
-        //сначала вводим долготу потом широту
-        ProjCoordinate srcCoord = new ProjCoordinate(y, x);
-        ProjCoordinate dstCoord = new ProjCoordinate();
-        transform.transform(srcCoord, dstCoord);
-
-        // Выводим результат(наоборот x->y)
-        //System.out.println("Преобразованные координаты: " + dstCoord.x + ", " + dstCoord.y);
-        //возвращаем масив b, l
-        list.add(dstCoord.y);
-        list.add(dstCoord.x);
-        return list;
     }
 //    public double[] getBLPoint(double x, double y) {
 //        if (x < 99999) {
