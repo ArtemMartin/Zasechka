@@ -59,7 +59,7 @@ public class ZasechkaFrame extends javax.swing.JFrame {
 
         boxHaracter.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         boxHaracter.setForeground(new java.awt.Color(0, 0, 0));
-        boxHaracter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Арт орудие", "миномет", "РСЗО", "ат", "бт", "Колонна", "ТЗБПЛА" }));
+        boxHaracter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Арт орудие", "миномет", "РСЗО", "ат", "бт", "Колонна", "ТЗБПЛА", "пехота" }));
 
         jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
